@@ -1,0 +1,109 @@
+.container {
+    display: grid;
+    grid-template-areas:
+        "display display display display"
+        "clear clear clear divide"
+        "seven eight nine multiply"
+        "four five six minus"
+        "one two three plus"
+        "zero zero zero equal";
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(6, 1fr);
+    height: 500px;
+    width: 300px;
+    background-color: rgb(80,81,82);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+body {
+    font-family: Arial;
+    font-size: 25px;
+    color: rgb(231,231,232);
+}
+
+.clear, .num, .operator {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgb(80,81,82);
+}
+
+.num {
+    background-color: rgb(122,124,125);
+}
+
+.operator {
+    background-color: rgb(243,162,60);
+}
+
+.display {
+    grid-area: display;
+}
+
+.clear {
+    grid-area: clear;
+    background-color: rgb(96,99,101);
+}
+
+.operator.divide {
+    grid-area: divide;
+}
+
+.num.seven {
+    grid-area: seven;
+}
+
+.num.eight {
+    grid-area: eight;
+}
+
+.num.nine {
+    grid-area: nine;
+}
+
+.operator.multiply {
+    grid-area: multiply;
+}
+
+.num.four {
+    grid-area: four;
+}
+
+.num.five {
+    grid-area: five;
+}
+
+.num.six {
+    grid-area: six;
+}
+
+.operator.minus {
+    grid-area: minus;
+}
+
+.num.one {
+    grid-area: one;
+}
+
+.num.two {
+    grid-area: two;
+}
+
+.num.three {
+    grid-area: three;
+}
+
+.operator.plus {
+    grid-area: plus;
+}
+
+.num.zero {
+    grid-area: zero;
+}
+
+.operator.equal {
+    grid-area: equal;
+}
