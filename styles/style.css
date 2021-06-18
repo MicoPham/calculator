@@ -4,8 +4,8 @@
         "display display display display"
         "clear clear clear divide"
         "seven eight nine multiply"
-        "four five six minus"
-        "one two three plus"
+        "four five six subtract"
+        "one two three add"
         "zero zero zero equal";
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
@@ -24,7 +24,7 @@ body {
     color: rgb(231,231,232);
 }
 
-.clear, .num, .operator {
+.clear, .num, .operator, .equal {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -35,12 +35,17 @@ body {
     background-color: rgb(122,124,125);
 }
 
-.operator {
+.operator, .equal{
     background-color: rgb(243,162,60);
 }
 
 .display {
     grid-area: display;
+    display: flex;
+    align-items: center;
+    justify-self: end;
+    font-size: 50px;
+    margin-right: 20px;
 }
 
 .clear {
@@ -80,8 +85,8 @@ body {
     grid-area: six;
 }
 
-.operator.minus {
-    grid-area: minus;
+.operator.subtract {
+    grid-area: subtract;
 }
 
 .num.one {
@@ -96,14 +101,14 @@ body {
     grid-area: three;
 }
 
-.operator.plus {
-    grid-area: plus;
+.operator.add {
+    grid-area: add;
 }
 
 .num.zero {
     grid-area: zero;
 }
 
-.operator.equal {
+.equal {
     grid-area: equal;
 }
