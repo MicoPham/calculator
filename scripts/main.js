@@ -118,7 +118,11 @@ function operate(operator, a, b) {
             return multiply(a, b);
             break;
         case '/':
+            if (b === 0) {
+                return 'No';
+            } else {
             return divide(a, b);
+            }
             break;
         default:
             return
