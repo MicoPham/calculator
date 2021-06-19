@@ -1,123 +1,43 @@
-let a = '';
-let b = '';
-let operator = '';
-
 const numsBtn = document.querySelectorAll('.num');
 const display = document.querySelector('.display');
 const clearBtn = document.querySelector('.clear');
 const operatorBtn = document.querySelectorAll('.operator');
 const equalBtn = document.querySelector('.equal');
 const decimalBtn = document.querySelector('.decimal');
+const backBtn = document.querySelector('.backspace');
 
-equalBtn.addEventListener('click', (e) => {
-    if (a !== '' && b !== '' && operator !== '') {
-        let temp = operate(operator, Number(a), Number(b));
-        display.textContent = temp;
-        a = temp.toString();
-        b = '';
-        operator = '';
-        return;
-    }
-})
+clearBtn.addEventListener('click', clear);    
 
-clearBtn.addEventListener('click', (e) => {
-    clear();    
-})
+backBtn.addEventListener('click', backspace);
+
+numsBtn.forEach((num) => {
+    num.addEventListener('click', (e) => clickedBtn(e));});
+
+operatorBtn.forEach((oper) => {
+    oper.addEventListener('click', (e) => clickedOperation(e));});
 
 decimalBtn.addEventListener('click', (e) => {
     if (b.includes('.')) {
         return;
-    } else 
-    if (a === '' && (b === '' || b !== '') && operator === ''){
-        display.textContent += e.target.innerText;
-        b = display.textContent;
-        console.log(b);
-        return;
     } 
-    if (a !== '' && b === '' && operator !== '' ){
-        display.textContent = e.target.innerText;
-        b = display.textContent;
-        console.log(b);
-        return;
-        } 
-    if (a !== '' && b !== '' && operator !== '' ){
-        display.textContent += e.target.innerText;
-        b = display.textContent;
-        console.log(b);
-        return;
-        }
+    clickedBtn(e);
 });
 
-numsBtn.forEach((num) => {
-    num.addEventListener('click', (e) => {
-        if (a === '' && (b === '' || b !== '') && operator === ''){
-            display.textContent += e.target.innerText;
-            b = display.textContent;
-            console.log(b);
-            return;
-        } 
-        if (a !== '' && b === '' && operator !== '' ){
-            display.textContent = e.target.innerText;
-            b = display.textContent;
-            console.log(b);
-            return;
-            } 
-        if (a !== '' && b !== '' && operator !== '' ){
-            display.textContent += e.target.innerText;
-            b = display.textContent;
-            console.log(b);
-            return;
-            }
-    });
-});
+equalBtn.addEventListener('click', () => equals());
 
+let a = '';
+let b = '';
+let operator = '';
 
-operatorBtn.forEach((oper) => {
-    oper.addEventListener('click', (e) => {
-        if (a === '' && b === ''){
-            return
-        } 
-        if (a === '' && b !== '' && operator === ''){
-            a = b;
-            b = '';
-            display.textContent = '';
-            operator = e.target.innerText;
-            console.log(operator);
-            return
-        }
-        if (a !== '' && b === '' && operator === '') {
-            operator = e.target.innerText;
-            display.textContent = '';
-            console.log(operator);
-            return;
-        }
-        if (a !== '' && b !== '' && operator !== '') {
-            let temp = operate(operator, Number(a), Number(b));
-            display.textContent = temp;
-            a = temp.toString();
-            b = '';
-            operator = e.target.innerText;
-            return;
-        }
-        }
-    );
-});
+let add = (a, b) => a + b;
 
-function add(a, b) {
-    return a + b;
-}
+let subtract = (a, b) => a - b;
 
-function subtract(a, b) {
-    return a - b;
-}
+let multiply = (a, b) => a * b;
 
-function multiply(a, b) {
-    return a * b;
-}
+let divide = (a, b) => a / b;
 
-function divide(a, b) {
-    return a / b;
-}
+let round = (num) => Math.round(num * 10000) / 10000;
 
 function operate(operator, a, b) {
     switch (operator) {
@@ -132,13 +52,10 @@ function operate(operator, a, b) {
             break;
         case '/':
             if (b === 0) {
-                return 'No';
+                return 'lol';
             } else {
             return divide(a, b);
             }
-            break;
-        default:
-            return
     }
 }
 
@@ -149,3 +66,53 @@ function clear(){
     display.textContent = '';
 }
 
+function equals(){
+    if (a !== '' && b !== '' && operator !== '') {
+        let temp = round(operate(operator, Number(a), Number(b)));
+        display.textContent = temp;
+        a = temp.toString();
+        b = '';
+        operator = '';
+    }
+    }
+
+function clickedBtn(e) {
+    if (a === '' && (b === '' || b !== '') && operator === ''){
+        display.textContent += e.target.innerText;
+        b = display.textContent;
+        return;
+    } 
+    if (a !== '' && b === '' && operator !== '' ){
+        display.textContent = e.target.innerText;
+        b = display.textContent;
+        return;
+        } 
+    if (a !== '' && b !== '' && operator !== '' ){
+        display.textContent += e.target.innerText;
+        b = display.textContent;
+        }
+}
+
+function clickedOperation(e) {
+    if (a === '' && b === ''){
+        return
+    } 
+    if (a === '' && b !== '' && operator === ''){
+        a = b;
+        b = '';
+        display.textContent = '';
+        operator = e.target.innerText;
+        return
+    }
+    if (a !== '' && b === '' && operator === '') {
+        operator = e.target.innerText;
+        display.textContent = '';
+        return;
+    }
+    equals();
+}
+
+function backspace() {
+    b = b.slice(0, -1);
+    display.textContent = b;
+}

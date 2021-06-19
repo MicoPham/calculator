@@ -2,7 +2,7 @@
     display: grid;
     grid-template-areas:
         "display display display display"
-        "clear clear clear divide"
+        "clear clear backspace divide"
         "seven eight nine multiply"
         "four five six subtract"
         "one two three add"
@@ -24,7 +24,7 @@ body {
     color: rgb(231,231,232);
 }
 
-.clear, .num, .operator, .equal, .decimal {
+.clear,.backspace, .num, .operator, .equal, .decimal {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -48,7 +48,7 @@ body {
     margin-right: 20px;
 }
 
-.clear {
+.clear, .backspace {
     grid-area: clear;
     background-color: rgb(96,99,101);
 }
@@ -115,4 +115,8 @@ body {
 
 .decimal {
     grid-area: decimal;
+}
+
+.backspace {
+    grid-area: backspace;
 }
