@@ -11,10 +11,12 @@ clearBtn.addEventListener('click', clear);
 backBtn.addEventListener('click', backspace);
 
 numsBtn.forEach((num) => {
-    num.addEventListener('click', (e) => clickedBtn(e));});
+    num.addEventListener('click', (e) => clickedBtn(e));
+});
 
 operatorBtn.forEach((oper) => {
-    oper.addEventListener('click', (e) => clickedOperation(e));});
+    oper.addEventListener('click', (e) => clickedOperation(e));
+});
 
 decimalBtn.addEventListener('click', (e) => {
     if (b.includes('.')) {
