@@ -7,6 +7,7 @@ const display = document.querySelector('.display');
 const clearBtn = document.querySelector('.clear');
 const operatorBtn = document.querySelectorAll('.operator');
 const equalBtn = document.querySelector('.equal');
+const decimalBtn = document.querySelector('.decimal');
 
 equalBtn.addEventListener('click', (e) => {
     if (a !== '' && b !== '' && operator !== '') {
@@ -22,6 +23,30 @@ equalBtn.addEventListener('click', (e) => {
 clearBtn.addEventListener('click', (e) => {
     clear();    
 })
+
+decimalBtn.addEventListener('click', (e) => {
+    if (b.includes('.')) {
+        return;
+    } else 
+    if (a === '' && (b === '' || b !== '') && operator === ''){
+        display.textContent += e.target.innerText;
+        b = display.textContent;
+        console.log(b);
+        return;
+    } 
+    if (a !== '' && b === '' && operator !== '' ){
+        display.textContent = e.target.innerText;
+        b = display.textContent;
+        console.log(b);
+        return;
+        } 
+    if (a !== '' && b !== '' && operator !== '' ){
+        display.textContent += e.target.innerText;
+        b = display.textContent;
+        console.log(b);
+        return;
+        }
+});
 
 numsBtn.forEach((num) => {
     num.addEventListener('click', (e) => {
@@ -43,18 +68,6 @@ numsBtn.forEach((num) => {
             console.log(b);
             return;
             }
-        if (a !== '' && b === '' && operator === '' ){
-            display.textContent = e.target.innerText;
-            b = display.textContent;
-            console.log(b);
-            return;
-            } 
-        if (a !== '' && b !== '' && operator === '' ){
-            display.textContent += e.target.innerText;
-            b = display.textContent;
-            console.log(b);
-            return;
-            } 
     });
 });
 

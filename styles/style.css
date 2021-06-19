@@ -6,7 +6,7 @@
         "seven eight nine multiply"
         "four five six subtract"
         "one two three add"
-        "zero zero zero equal";
+        "zero zero decimal equal";
     grid-template-columns: repeat(4, 1fr);
     grid-template-rows: repeat(6, 1fr);
     height: 500px;
@@ -24,14 +24,14 @@ body {
     color: rgb(231,231,232);
 }
 
-.clear, .num, .operator, .equal {
+.clear, .num, .operator, .equal, .decimal {
     display: flex;
     align-items: center;
     justify-content: center;
     border: 1px solid rgb(80,81,82);
 }
 
-.num {
+.num, .decimal{
     background-color: rgb(122,124,125);
 }
 
@@ -111,4 +111,8 @@ body {
 
 .equal {
     grid-area: equal;
+}
+
+.decimal {
+    grid-area: decimal;
 }
